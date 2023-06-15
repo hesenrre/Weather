@@ -1,0 +1,9 @@
+<h1>Clima</h1>
+<%= form_with url: weather_search_path, method: :post, local: false do |form|%>
+  <%= form.label :query, "Get weather for Zip Code:" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<div class="result-container">
+</div>

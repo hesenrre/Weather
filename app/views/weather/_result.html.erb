@@ -1,0 +1,29 @@
+<% if @data.empty? %>
+  <h1>Sorry no results for input</h1>
+<% else %>
+  <h1><%= @data['location']['name']%>, <%= @data['location']['region']%><%= @data['location']['country']%></h1>
+  <table>
+  <tr>
+  <td>
+    <p>Current temperature <%= @data['current']['temp_f']%>&deg;f <%= @data['current']['condition']['text']%></p>
+    <p>Feels Like <%= @data['current']['feelslike_f']%>&deg;f</p>
+    <p>Min <%= @data['forecast']['forecastday'][0]['day']['mintemp_f']%>&deg;f , Max <%= @data['forecast']['forecastday'][0]['day']['maxtemp_f']%>&deg;f</p>
+  </td>
+  <td><img src="<%= @data['current']['condition']['icon']%>"/></td>
+  </tr>
+  <tr>
+  </tr>
+  </table>
+  <h2>Forecast next 9 Days</h2>
+  <ul>
+    <%@data['forecast']['forecastday'][1..-1].each do |day| %> 
+      <li>
+        <p><%= day['date']%></p>
+        <p><%= day['day']['mintemp_f']%></p>
+        <p><%= day['day']['maxtemp_f']%></p>
+        <p><%= day['day']['condition']['text']%></p>
+        <p><img src="<%= day['day']['condition']['icon']%>"/></p>        
+      </li>
+    <% end %>
+  </ul>
+<% end %>

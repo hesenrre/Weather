@@ -1,0 +1,2 @@
+var container = document.querySelector(".result-container")
+container.innerHTML = "<%= escape_javascript (render partial: 'result', locals: {data: @data}) %>"
