@@ -15,15 +15,15 @@
   </tr>
   </table>
   <h2>Forecast next 9 Days</h2>
-  <ul>
+
+  <div class="forecast">
     <%@data['forecast']['forecastday'][1..-1].each do |day| %> 
-      <li>
-        <p><%= day['date']%></p>
-        <p><%= day['day']['mintemp_f']%></p>
-        <p><%= day['day']['maxtemp_f']%></p>
-        <p><%= day['day']['condition']['text']%></p>
+      <div>
         <p><img src="<%= day['day']['condition']['icon']%>"/></p>        
-      </li>
+        <p><%= day['day']['condition']['text']%></p>
+        <p><%= day['day']['mintemp_f']%> - <%= day['day']['maxtemp_f']%></p>
+        <p><%= day['date']%></p>
+      </div>
     <% end %>
-  </ul>
+  </div>
 <% end %>
